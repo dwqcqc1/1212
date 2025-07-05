@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Asset Protection - Burgos & Brein Wealth Management</title>
+    <meta name="viewport" content="width=669, initial-scale=1.0">
+    <style>
+        body { margin: 0; font-family: Arial, Helvetica, sans-serif; color: #50351b; background: #fff; }
+        .notice { background: #f4f4f4; color: #50351b; font-size: 13px; border-bottom: 1px solid #ddd; padding: 7px 20px; }
+        .top-bar { background: #50351b; color: #fff; padding: 6px 20px; font-size: 14px; display: flex; justify-content: space-between; align-items: center; }
+        .top-bar .left { display: flex; align-items: center; gap: 20px; }
+        .top-bar a { color: #fff; text-decoration: none; }
+        .client-login { color: #fff; font-size: 13px; }
+        .header { display: flex; align-items: center; background: #fff; padding: 0 20px; border-bottom: 2px solid #d7bb99; }
+        .logo { display: flex; align-items: center; padding: 10px 0; }
+        .logo img { height: 45px; margin-right: 10px; }
+        .site-title { font-size: 22px; font-weight: bold; color: #50351b; }
+        .site-tagline { font-size: 13px; color: #b48d53; }
+        nav { margin-left: auto; }
+        nav a { color: #50351b; text-decoration: none; font-size: 17px; margin: 0 14px; padding-bottom: 3px; }
+        nav a.active, nav a:hover { border-bottom: 2px solid #d7bb99; }
+        .hero { position: relative; width: 100%; height: 180px; background: #222; display: flex; align-items: center; justify-content: center; }
+        .hero img { width: 100%; height: 180px; object-fit: cover; opacity: 0.5; }
+        .hero-title { position: absolute; color: #fff; font-size: 38px; font-weight: 400; }
+        .breadcrumb { font-size: 13px; color: #b48d53; background: #faf6f2; padding: 8px 20px; }
+        .breadcrumb a { color: #b48d53; text-decoration: none; }
+        .main-container { display: flex; align-items: flex-start; padding: 20px; max-width: 1100px; margin: 0 auto; }
+        .main-content { flex: 1; padding-right: 40px; }
+        .main-content img { width: 100%; max-width: 670px; margin-bottom: 25px; }
+        .services-sidebar { width: 230px; background: #fff; box-shadow: 0 2px 8px rgba(200,170,120,0.1); border-radius: 2px; padding: 20px 20px; margin-left: 15px; }
+        .services-sidebar h3 { color: #b48d53; font-size: 26px; font-weight: 400; margin-top: 0; }
+        .services-sidebar ul { list-style: none; padding: 0; margin: 0; }
+        .services-sidebar li { margin-bottom: 14px; font-size: 16px; }
+        .services-sidebar li.active a { color: #b48d53; font-weight: bold; border-left: 4px solid #b48d53; padding-left: 8px;}
+        .services-sidebar a { color: #50351b; text-decoration: none; }
+        .chat-btn { position: fixed; right: 18px; top: 390px; background: #b48d53; color: #fff; border-radius: 50%; width: 46px; height: 46px; display: flex; align-items: center; justify-content: center; font-size: 26px; box-shadow: 0 2px 8px rgba(80,53,27,0.2); border: none; cursor: pointer; }
+        h1, h2, h3 { color: #50351b; font-weight: 400; }
+        h1 { font-size: 28px; margin-bottom: 18px; }
+        h2 { font-size: 23px; margin-top: 28px; margin-bottom: 10px; }
+        .main-content p { line-height: 1.7; margin-top: 0; }
+        .main-content ul { margin-top: 10px; margin-bottom: 20px; }
+        .main-content li { margin-bottom: 6px; }
+        .footer { background: #50351b; color: #fff; padding: 32px 20px 16px 20px; }
+        .footer-links { display: flex; justify-content: space-between; max-width: 1100px; margin: 0 auto; flex-wrap: wrap; }
+        .footer-col { min-width: 180px; margin-bottom: 18px; }
+        .footer-col h4 { color: #d7bb99; font-size: 18px; font-weight: 400; margin: 10px 0; }
+        .footer-col ul { list-style: none; padding: 0; }
+        .footer-col li { margin-bottom: 7px; }
+        .footer-col a { color: #fff; text-decoration: none; }
+        .footer .contact-info, .footer .email-address { font-size: 15px; margin-bottom: 7px; }
+        .footer-bottom { text-align: left; color: #fff; font-size: 14px; border-top: 1px solid #d7bb99; margin-top: 20px; padding-top: 10px; max-width: 1100px; margin-left:auto; margin-right:auto;}
+        .footer .sitemap { float: right; color: #d7bb99; text-decoration: none; }
+        .footer input[type=email] { padding: 6px 8px; font-size: 15px; border: 1px solid #ccc; border-radius: 2px; margin-bottom: 8px; width: 90%; }
+        .footer button, .footer input[type=submit] { background: #b48d53; color: #fff; border: none; padding: 8px 20px; font-size: 15px; border-radius: 2px; cursor: pointer; }
+        .bbb-logo { height: 44px; margin-bottom: 16px; }
+        @media (max-width: 900px) {
+            .main-container { flex-direction: column; }
+            .main-content { padding-right: 0; }
+            .services-sidebar { width: 100%; margin-left: 0; margin-top: 25px; }
+            .footer-links { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+    <div class="notice">Notice: Function _load_textdomain_just_in_time was called <b>incorrectly</b>. Translation loading for the <b>acf</b> domain was triggered too early. This is usually an indicator for some code in the plugin or theme running too early. Translations should be loaded at the <b>init</b> action or later. Please see <a href="#">Debugging in WordPress</a> for more information. (This message was added in version 6.7.0.) in <span style="color:#a33;">/home/burgosandbrein/public_html/wp-includes/functions.php on line 6121</span></div>
+    <div class="notice">Notice: Function _load_textdomain_just_in_time was called <b>incorrectly</b>. Translation loading for the <b>siteorigin-premium</b> domain was triggered too early. This is usually an indicator for some code in the plugin or theme running too early. Translations should be loaded at the <b>init</b> action or later. Please see <a href="#">Debugging in WordPress</a> for more information. (This message was added in version 6.7.0.) in <span style="color:#a33;">/home/burgosandbrein/public_html/wp-includes/functions.php on line 6121</span></div>
+
+    <div class="top-bar">
+        <div class="left">
+            <span><a href="mailto:info@burgosandbrein.com">info@burgosandbrein.com</a></span>
+            <span> | </span>
+            <span>866.949.7675</span>
+        </div>
+        <span class="client-login"><a href="#">Client Login</a></span>
+    </div>
+
+    <div class="header">
+        <div class="logo">
+            <img src="https://www.burgosandbrein.com/wp-content/uploads/2021/09/logo-burgos-brein-v2.png" alt="Burgos & Brein Logo">
+            <div>
+                <div class="site-title">BURGOS & BREIN</div>
+                <div class="site-tagline">WEALTH MANAGEMENT<br>Protecting Your Retirement</div>
+            </div>
+        </div>
+        <nav>
+            <a href="#">Home</a>
+            <a href="#">About</a>
+            <a href="#">Services</a>
+            <a href="#">Seminars</a>
+            <a href="#">Blog</a>
+            <a href="#">News</a>
+            <a href="#">Contact</a>
+        </nav>
+    </div>
+
+    <div class="hero">
+        <img src="https://www.burgosandbrein.com/wp-content/uploads/2021/09/services-header-bg.jpg" alt="Asset Protection Hero">
+        <div class="hero-title">Asset Protection</div>
+    </div>
+
+    <div class="breadcrumb">
+        <a href="#">Burgos & Brein Wealth Management</a> &raquo; <a href="#">Services</a> &raquo; Asset Protection
+    </div>
+
+    <div class="main-container">
+        <div class="main-content">
+            <img src="https://www.burgosandbrein.com/wp-content/uploads/2021/09/asset-protection.jpg" alt="Asset Protection Yacht">
+            <h1>Safeguarding Your Legacy in the Face of Unexpected Costs</h1>
+            <p>Long-term care and other unforeseen life events can significantly strain your hard-earned assets. Burgos and Brein Wealth Management is committed to protecting your financial security and providing you with complete peace of mind. Our asset protection services are designed to minimize financial risk, preserve your legacy, and help you navigate government benefit programs.</p>
+            <h2>Why Asset Protection Matters</h2>
+            <p>Without careful planning, the costs of long-term care, medical expenses, or legal challenges can rapidly erode your life savings. Government programs like Medicaid have a 5-year look-back period, and the VA has a 3-year look-back period, scrutinizing financial transactions before benefit applications. Proactive asset protection helps mitigate these risks, ensuring resources are available for you and your loved ones when needed.</p>
+            <h2>How We Help You</h2>
+            <p>We start by thoroughly assessing your assets, financial obligations, and potential risks to create a tailored asset protection strategy. We then utilize proven strategies to safeguard your resources within the bounds of relevant laws and regulations. Our team never offers one-size-fits-all solutions. We work closely with you to understand your unique priorities and financial goals, and we specialize in planning strategies to overcome government look-back periods and qualify for benefits.</p>
+            <h2>Don’t Leave Your Assets Vulnerable</h2>
+            <p>Proactive asset protection planning isn’t just about safeguarding wealth; it’s about giving you control and peace of mind for the future. By establishing a sound asset protection strategy, you gain:</p>
+            <ul>
+                <li>Protection against unexpected financial burdens</li>
+                <li>Protection of your legacy for future generations</li>
+                <li>Mitigation of potential legal disputes</li>
+                <li>The ability to qualify for benefits immediately</li>
+            </ul>
+            <p><b>Let us help you secure your financial future. Contact us for a consultation today.</b></p>
+        </div>
+        <div class="services-sidebar">
+            <h3>Services</h3>
+            <ul>
+                <li class="active"><a href="#">Asset Protection</a></li>
+                <li><a href="#">Investment Planning</a></li>
+                <li><a href="#">Medicaid Planning</a></li>
+                <li><a href="#">Medicare Planning</a></li>
+                <li><a href="#">Retirement Planning</a></li>
+                <li><a href="#">Simplify Medicare Planning</a></li>
+                <li><a href="#">VA Aid & Attendance</a></li>
+            </ul>
+        </div>
+        <button class="chat-btn" title="Chat"><span>&#128172;</span></button>
+    </div>
+
+    <div class="footer">
+        <div class="footer-links">
+            <div class="footer-col">
+                <img class="bbb-logo" src="https://www.bbb.org/Images/BBB_Accredited_Bus_RGB.png" alt="BBB Accredited A+">
+                <img src="https://www.burgosandbrein.com/wp-content/uploads/2021/09/logo-burgos-brein-v2.png" alt="Burgos & Brein Logo" style="height:36px;">
+                <form>
+                    <input type="email" placeholder="Email">
+                    <br>
+                    <button type="submit">Submit</button>
+                </form>
+            </div>
+            <div class="footer-col">
+                <h4>Office</h4>
+                <b>Orlando Office</b><br>
+                1060 Woodcock Rd<br>
+                Orlando, FL 32803<br><br>
+                <b>Boca Raton Office</b><br>
+                2255 Glades Rd<br>
+                Boca Raton, FL 33431<br>
+                <div class="contact-info">Contact Information<br>866.949.7675</div>
+                <div class="email-address">info@burgosandbrein.com</div>
+            </div>
+            <div class="footer-col">
+                <h4>Policy Links</h4>
+                <ul>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Disclaimer</a></li>
+                    <li><a href="#">Terms and Conditions</a></li>
+                    <li><a href="#">Cookie Policy</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Services</a></li>
+                    <li><a href="#">Seminars</a></li>
+                    <li><a href="#">Galleries/News</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Client Login</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            © 2025 Burgos & Brein Wealth Management All Rights Reserved
+            <a href="#" class="sitemap">Sitemap</a>
+        </div>
+    </div>
+</body>
+</html>

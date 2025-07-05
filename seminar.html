@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Seminar - Burgos & Brein Wealth Management</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {font-family: Arial, sans-serif; margin:0; background:#fff;}
+        .header-top {background:#fff; padding:8px 18px; font-size:14px; color:#6d4c2a; display:flex; justify-content:flex-end; align-items:center;}
+        .header-top a {color:#794e28; margin-left:16px; text-decoration:none; font-weight:500;}
+        .header-top a:hover {text-decoration:underline;}
+        .header-main {display:flex; align-items:center; justify-content:space-between; padding:15px 24px 12px 24px; background:#fff; border-bottom:2px solid #ede9e1;}
+        .logo img {height:56px;}
+        .nav {display:flex; gap:24px;}
+        .nav a {color:#6d4c2a; font-size:16px; font-weight:600; text-decoration:none;}
+        .nav a.active,
+        .nav a:focus {color:#bb8d5a;}
+        .nav a:hover {text-decoration:underline;}
+        .hero {
+            position:relative; min-height:220px; background:url('seminar-hero.jpg') center center/cover no-repeat;
+            display:flex; align-items:center; justify-content:center;
+        }
+        .hero-overlay {
+            position:absolute; top:0; left:0; width:100%; height:100%; background:rgba(70, 44, 25, 0.45);
+            z-index:1;
+        }
+        .hero-content {
+            position:relative; z-index:2;
+            color:#fff; text-align:center; padding:40px 15px;
+            display:flex; flex-direction:column; align-items:center; justify-content:center;
+        }
+        .hero-title {font-size:2.3rem; font-weight:700; margin-bottom:0;}
+        .breadcrumb {font-size:13px; color:#a58b6b; background:#faf7f3; padding:8px 18px;}
+        .breadcrumb a {color:#a58b6b; text-decoration:none;}
+        .breadcrumb a:hover {text-decoration:underline;}
+        .section {padding:35px 0;}
+        .center {text-align:center;}
+        .seminar-main {max-width:1100px; margin:32px auto 0 auto; padding:0 18px;}
+        .seminar-flex {display:flex; flex-wrap:wrap; align-items:center; justify-content:center; gap:34px;}
+        .seminar-image {flex:1 1 390px; min-width:240px; text-align:center;}
+        .seminar-image img {max-width:340px; width:100%; border-radius:12px;}
+        .seminar-promo {flex:2 1 420px; min-width:240px;}
+        .seminar-promo-title {margin-bottom:12px;}
+        .seminar-promo-btn {
+            display:inline-block;background:#794e28;color:#fff;font-size:1rem;font-weight:600;
+            padding:12px 26px;border:none;border-radius:6px;cursor:pointer;transition:background 0.16s;margin-top:18px;
+        }
+        .seminar-promo-btn:hover {background:#bb8d5a;}
+        .seminar-desc {margin:32px 0 0 0; font-size:1.08rem; color:#4b3928;}
+        .seminar-accordion {margin:38px 0 0 0;}
+        .accordion {border-radius:6px; border:1px solid #eee; max-width:100%;}
+        .accordion-item {border-bottom:1px solid #eee;}
+        .accordion-title {
+            cursor:pointer; background:#f5f2ef; padding:16px 18px; font-size:1.08rem; color:#794e28; font-weight:600; outline:none; border:none; text-align:left; transition:background 0.2s;
+            position:relative;
+        }
+        .accordion-title:after {
+            content: "+"; position:absolute; right:22px; font-size:1.25rem; color:#b4864e;
+        }
+        .accordion-title.active:after { content: "-"; }
+        .accordion-content {
+            display:none; background:#fff; padding:14px 20px 18px 20px; color:#4b3928; font-size:1.01rem; animation:fadeIn 0.4s;
+        }
+        .accordion-content.active {display:block;}
+        @keyframes fadeIn {from {opacity:0;} to {opacity:1;}}
+        /* Footer */
+        .footer {background:#4b3928; color:#fff; padding:38px 0 14px 0; margin-top:36px;}
+        .footer-inner {max-width:1250px; margin:auto; display:flex; flex-wrap:wrap; gap:48px;}
+        .footer-col {flex:1 1 220px; min-width:160px;}
+        .footer-col a {color:#fffbe6; text-decoration:none; display:block; margin-bottom:8px;}
+        .footer-col a:hover {text-decoration:underline;}
+        .footer-logo {margin-bottom:18px;}
+        .footer-bottom {text-align:center; color:#ded8d2; font-size:1.04rem; margin-top:28px;}
+        .sitemap {color:#ded8d2; float:right; margin-top:-28px; font-size:0.97rem;}
+        .footer-form input[type="email"] {width:88%;margin-bottom:9px; padding:7px; border-radius:3px; border:none; font-size:1rem;}
+        .footer-form button {background:#bb8d5a;color:#fff;padding:8px 22px;border:none;border-radius:3px;cursor:pointer;font-size:1rem; font-weight:600;}
+        @media(max-width:1100px) {
+            .footer-inner, .seminar-flex {flex-direction:column; align-items:center;}
+            .footer-col {min-width:140px;}
+        }
+        @media(max-width:900px) {
+            .seminar-image img {max-width:95vw;}
+        }
+        @media(max-width:650px) {
+            .header-main, .header-top {flex-direction:column; align-items:flex-start;}
+            .header-main {padding:16px;}
+            .logo img {height:40px;}
+            .nav {gap:12px;}
+            .hero-title {font-size:2rem;}
+            .hero {min-height:100px;}
+            .seminar-main {padding:0 7px;}
+        }
+    </style>
+    <script>
+        // Simple accordion logic
+        document.addEventListener("DOMContentLoaded", function() {
+            var acc = document.getElementsByClassName("accordion-title");
+            for (let i = 0; i < acc.length; i++) {
+                acc[i].addEventListener("click", function() {
+                    // Collapse all
+                    for (let j = 0; j < acc.length; j++) {
+                        acc[j].classList.remove("active");
+                        acc[j].nextElementSibling.classList.remove("active");
+                    }
+                    // Expand clicked
+                    this.classList.add("active");
+                    this.nextElementSibling.classList.add("active");
+                });
+            }
+            // Expand the first by default
+            if (acc.length) {
+                acc[0].classList.add("active");
+                acc[0].nextElementSibling.classList.add("active");
+            }
+        });
+    </script>
+</head>
+<body>
+    <!-- Header Top Bar -->
+    <div class="header-top">
+        info@burgosandbrein.com &nbsp;|&nbsp; 866.949.7675
+        <a href="#">Client Login</a>
+    </div>
+
+    <!-- Header Main -->
+    <div class="header-main">
+        <div class="logo">
+            <img src="logo.png" alt="Burgos & Brein Wealth Management Logo" />
+        </div>
+        <nav class="nav">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="services.html">Services</a>
+            <a href="seminar.html" class="active">Seminars</a>
+            <a href="#">Blog</a>
+            <a href="#">News</a>
+            <a href="#">Contact</a>
+        </nav>
+    </div>
+
+    <!-- Hero Section -->
+    <div class="hero" style="background-image:url('seminar-hero.jpg');">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <div class="hero-title">Seminar</div>
+        </div>
+    </div>
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+        <a href="index.html">Burgos & Brein Wealth Management</a> &raquo; Seminars
+    </div>
+
+    <!-- Main Content -->
+    <div class="seminar-main">
+        <div class="seminar-flex">
+            <div class="seminar-image">
+                <img src="seminar-promo.jpg" alt="Burgos & Brein Seminar Promo">
+            </div>
+            <div class="seminar-promo">
+                <img src="logo.png" alt="Burgos & Brein Wealth Management Logo" style="max-width:170px; margin-bottom:16px;"><br>
+                <div class="seminar-promo-title" style="font-size:2rem;font-weight:700; color:#533e2c; margin-bottom:8px;">We're excited to partner with you!</div>
+                <div style="font-size:1.07rem; color:#533e2c;">DON'T DELAY, SECURE A DATE FOR YOUR FACILITY TODAY!</div>
+                <button class="seminar-promo-btn">Schedule a FREE seminar now!</button>
+            </div>
+        </div>
+        <div class="seminar-desc">
+            Achieve Optimal Financial Outcomes – Schedule a Burgos &amp; Brein Seminar | Gain the knowledge and strategies to confidently navigate complex financial landscapes. Our seminars, led by industry authority Mr. Gabriel Burgos, empower you to make informed decisions regarding VA Aid and Attendance, Medicaid and Medicare Planning, Asset Protection, and Retirement Planning. Partner with Burgos &amp; Brein for unparalleled financial guidance. Contact Deborah@BurgosandBrein.com, call 866-949-7675, or click the button to inquire about seminar scheduling.
+        </div>
+        <div class="seminar-accordion">
+            <div class="accordion">
+                <div class="accordion-item">
+                    <div class="accordion-title">VA Aid &amp; Attendance</div>
+                    <div class="accordion-content">
+                        Learn how VA Aid & Attendance benefits can help veterans and their families cover long-term care and related expenses.
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <div class="accordion-title">TBA</div>
+                    <div class="accordion-content">
+                        Upcoming seminar topics will be announced soon. Stay tuned for updates!
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <div class="accordion-title">Medicare</div>
+                    <div class="accordion-content">
+                        Understand Medicare options, enrollment, and coverage to maximize your healthcare benefits and avoid costly mistakes.
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <div class="accordion-title">Medicaid</div>
+                    <div class="accordion-content">
+                        Explore Medicaid planning strategies to protect your assets while ensuring eligibility for crucial long-term care benefits.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <div class="footer-inner">
+            <div class="footer-col" style="min-width:220px;">
+                <div class="footer-logo">
+                    <img src="logo-footer.png" alt="Burgos & Brein Wealth Management Logo" width="170"/>
+                </div>
+                <img src="accreditations.png" alt="Accreditations" style="width:110px;">
+            </div>
+            <div class="footer-col">
+                <div style="color:#fffbe6;font-weight:700;margin-bottom:10px;">Office</div>
+                <div style="margin-bottom:8px;">
+                    Orlando Office<br>
+                    1060 Woodcock Rd<br>
+                    Orlando, FL 32803
+                </div>
+                <div style="margin-bottom:8px;">
+                    Boca Raton Office<br>
+                    2255 Glades Rd<br>
+                    Boca Raton, FL 33431
+                </div>
+                <div>Contact Information<br>
+                <a href="tel:8669497675">866.949.7675</a><br>
+                <a href="mailto:info@burgosandbrein.com">info@burgosandbrein.com</a></div>
+            </div>
+            <div class="footer-col">
+                <div style="color:#fffbe6;font-weight:700;margin-bottom:10px;">Policy Links</div>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Disclaimer</a>
+                <a href="#">Terms and Conditions</a>
+                <a href="#">Cookie Policy</a>
+            </div>
+            <div class="footer-col">
+                <div style="color:#fffbe6;font-weight:700;margin-bottom:10px;">Quick Links</div>
+                <a href="index.html">Home</a>
+                <a href="about.html">About Us</a>
+                <a href="services.html">Services</a>
+                <a href="seminar.html">Seminars</a>
+                <a href="#">Galleries/News</a>
+                <a href="#">Contact Us</a>
+                <a href="#">Client Login</a>
+            </div>
+            <div class="footer-col">
+                <div style="color:#fffbe6;font-weight:700;margin-bottom:10px;">Email</div>
+                <form class="footer-form">
+                    <input type="email" placeholder="Email" required>
+                    <button type="submit">Submit</button>
+                </form>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2025 Burgos & Brein Wealth Management All Rights Reserved
+            <span class="sitemap"><a href="#" style="color:#ded8d2;">Sitemap</a></span>
+        </div>
+    </div>
+</body>
+</html>

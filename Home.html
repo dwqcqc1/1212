@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Burgos & Brein Wealth Management</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {font-family: Arial, sans-serif; margin:0; background:#fff;}
+        /* Header Top Bar */
+        .header-top {background:#fff; padding:8px 18px; font-size:14px; color:#6d4c2a; display:flex; justify-content:flex-end; align-items:center;}
+        .header-top a {color:#794e28; margin-left:16px; text-decoration:none; font-weight:500;}
+        .header-top a:hover {text-decoration:underline;}
+        /* Header Main */
+        .header-main {display:flex; align-items:center; justify-content:space-between; padding:15px 24px 12px 24px; background:#fff; border-bottom:2px solid #ede9e1;}
+        .logo img {height:56px;}
+        .nav {display:flex; gap:24px;}
+        .nav a {color:#6d4c2a; font-size:16px; font-weight:600; text-decoration:none; position:relative;}
+        .nav a:hover {text-decoration:underline;}
+        /* Hero Section */
+        .hero {
+            position:relative; min-height:360px; background:url('hero-family.jpg') center center/cover no-repeat;
+            display:flex; align-items:center; justify-content:center;
+        }
+        .hero-overlay {
+            position:absolute; top:0; left:0; width:100%; height:100%; background:rgba(70, 44, 25, 0.45);
+            z-index:1;
+        }
+        .hero-content {
+            position:relative; z-index:2;
+            color:#fff; text-align:center; padding:40px 15px;
+            display:flex; flex-direction:column; align-items:center; justify-content:center;
+        }
+        .hero-title {font-size:2.8rem; font-weight:700; margin-bottom:18px; letter-spacing:0.03em;}
+        .hero-desc {font-size:1.25rem; margin-bottom:32px;}
+        .hero-btn {
+            background:#fff; color:#794e28; font-size:1.12rem; font-weight:700;
+            border:none; padding:15px 38px; border-radius:6px; cursor:pointer;
+            transition:background 0.18s;
+            box-shadow:0 2px 10px rgba(70,44,25,0.07);
+        }
+        .hero-btn:hover {background:#f5f2ef;}
+        /* Section - About & Services */
+        .section {padding:45px 0;}
+        .center {text-align:center;}
+        .section-title {font-size:1.6rem; color:#794e28; font-weight:700; margin-bottom:22px;}
+        .section-desc {font-size:1.13rem; color:#533e2c; margin-bottom:24px;}
+        .services {display:flex; flex-wrap:wrap; justify-content:center; gap:28px; margin-top:24px;}
+        .service-card {
+            flex:0 1 210px; background:#f7f5f2; border-radius:10px; overflow:hidden; text-align:center;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.05); transition:box-shadow 0.18s;
+        }
+        .service-card img {width:100%; height:120px; object-fit:cover; display:block;}
+        .service-card-title {font-size:1.13rem; color:#794e28; font-weight:700; margin:15px 0;}
+        .service-card:hover {box-shadow:0 4px 18px rgba(121,78,40,0.14);}
+        .service-card a {display:block; color:inherit; text-decoration:none;}
+        /* Why Us Section */
+        .features {display:flex; flex-wrap:wrap; justify-content:center; gap:24px; margin-top:16px;}
+        .feature-card {
+            flex:0 1 240px; background:#fff; border-radius:8px; box-shadow:0 2px 14px #eee;
+            text-align:center; padding:26px 18px; margin-bottom:18px; min-height:164px;
+            display:flex; flex-direction:column; justify-content:flex-start;
+        }
+        .feature-card h3 {font-size:1.11rem; color:#794e28; font-weight:700; margin-bottom:9px;}
+        .feature-card p {font-size:0.98rem; color:#443322;}
+        /* Workshops Section */
+        .workshops {display:flex; flex-wrap:wrap; gap:22px; justify-content:center; margin-top:25px;}
+        .workshop-img {flex:1 1 330px; min-width:260px; max-width:390px;}
+        .workshop-img img {width:100%; border-radius:9px;}
+        .workshop-desc {flex:1 1 265px; min-width:210px; max-width:390px; color:#3e3222; font-size:1.06rem; display:flex; align-items:center;}
+        /* Footer */
+        .footer {background:#4b3928; color:#fff; padding:38px 0 14px 0; margin-top:36px;}
+        .footer-inner {max-width:1250px; margin:auto; display:flex; flex-wrap:wrap; gap:48px;}
+        .footer-col {flex:1 1 220px; min-width:160px;}
+        .footer-col a {color:#fffbe6; text-decoration:none; display:block; margin-bottom:8px;}
+        .footer-col a:hover {text-decoration:underline;}
+        .footer-logo {margin-bottom:18px;}
+        .footer-bottom {text-align:center; color:#ded8d2; font-size:1.04rem; margin-top:28px;}
+        .sitemap {color:#ded8d2; float:right; margin-top:-28px; font-size:0.97rem;}
+        .footer-form input[type="email"] {
+            width:88%;margin-bottom:9px; padding:7px; border-radius:3px; border:none; font-size:1rem;
+        }
+        .footer-form button {
+            background:#bb8d5a;color:#fff;padding:8px 22px;border:none;border-radius:3px;cursor:pointer;
+            font-size:1rem; font-weight:600;
+        }
+        @media(max-width:1100px) {
+            .footer-inner, .services, .features, .workshops {flex-direction:column; align-items:center;}
+            .footer-col {min-width:140px;}
+        }
+        @media(max-width:650px) {
+            .header-main, .header-top {flex-direction:column; align-items:flex-start;}
+            .header-main {padding:16px;}
+            .logo img {height:40px;}
+            .nav {gap:12px;}
+            .hero-title {font-size:2rem;}
+            .hero {min-height:220px;}
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Top Bar -->
+    <div class="header-top">
+        info@burgosandbrein.com &nbsp;|&nbsp; 866.949.7675
+        <a href="#">Client Login</a>
+    </div>
+
+    <!-- Header Main -->
+    <div class="header-main">
+        <div class="logo">
+            <img src="logo.png" alt="Burgos & Brein Wealth Management Logo" />
+        </div>
+        <nav class="nav">
+            <a href="#">Home</a>
+            <a href="#">About</a>
+            <a href="#">Services</a>
+            <a href="#">Seminars</a>
+            <a href="#">Blog</a>
+            <a href="#">Contact Us</a>
+        </nav>
+    </div>
+
+    <!-- Hero Section -->
+    <div class="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <div class="hero-title">Protecting Your Retirement</div>
+            <div class="hero-desc">We help guard your wealth for the next generation to generation.</div>
+            <button class="hero-btn" onclick="location.href='#contact'">Let Us Help You</button>
+        </div>
+    </div>
+
+    <!-- About & Services -->
+    <div class="section center">
+        <div class="section-title">
+            Burgos & Brein Wealth Management is a trusted name in the Veterans’ Aid, Medicaid, and Long-Term Care Planning with 15 years of experience.
+        </div>
+        <div class="section-desc">
+            Our Services
+        </div>
+        <div class="services">
+            <div class="service-card">
+                <a href="#"><img src="va-aid.jpg" alt="VA Aid & Attendance"></a>
+                <div class="service-card-title"><a href="#">VA Aid & Attendance</a></div>
+            </div>
+            <div class="service-card">
+                <a href="#"><img src="medicare.jpg" alt="Medicare Planning"></a>
+                <div class="service-card-title"><a href="#">Medicare Planning</a></div>
+            </div>
+            <div class="service-card">
+                <a href="#"><img src="retirement.jpg" alt="Retirement Planning"></a>
+                <div class="service-card-title"><a href="#">Retirement Planning</a></div>
+            </div>
+            <div class="service-card">
+                <a href="#"><img src="medicaid.jpg" alt="Medicaid Planning"></a>
+                <div class="service-card-title"><a href="#">Medicaid Planning</a></div>
+            </div>
+            <div class="service-card">
+                <a href="#"><img src="asset-protection.jpg" alt="Asset Protection"></a>
+                <div class="service-card-title"><a href="#">Asset Protection</a></div>
+            </div>
+            <div class="service-card">
+                <a href="#"><img src="investment.jpg" alt="Investment Planning"></a>
+                <div class="service-card-title"><a href="#">Investment Planning</a></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Why Us Section -->
+    <div class="section" style="background:#f7f5f2;">
+        <div class="center">
+            <div class="section-title">Why Burgos and Brein Wealth Management</div>
+        </div>
+        <div class="features">
+            <div class="feature-card">
+                <h3>Stress-Free Financial Planning</h3>
+                <p>Burgos & Brein provides effortless management for all your financial planning needs.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Proven Expertise</h3>
+                <p>Our team brings over 15 years of specialized experience in retirement and long-term care planning.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Client Commitment</h3>
+                <p>We are deeply committed to ensuring the financial prosperity of our clients for the long term.</p>
+            </div>
+        </div>
+        <div class="features">
+            <div class="feature-card">
+                <h3>Unbiased Strategies</h3>
+                <p>As an independent firm, we provide customized financial solutions without favoring any specific companies.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Strategic Asset Protection</h3>
+                <p>Long-term care can pose a significant financial burden. Our priority lies in asset protection strategies, ensuring you have options while your funds are secure.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Fast VA Claims Processing</h3>
+                <p>Our expedited VA A&A claims process delivers efficient results to honor those who have served.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Workshops Section -->
+    <div class="section center">
+        <div class="section-title">Our VA Aid and Attendance Workshops</div>
+        <div class="workshops">
+            <div class="workshop-img">
+                <img src="legacy-pointe.jpg" alt="Legacy Pointe at UCF" />
+            </div>
+            <div class="workshop-desc">
+                Legacy Pointe at UCF redefines senior living. Expect a vibrant community, a focus on wellness and learning, and the enriching benefits of a partnership with the University of Central Florida.
+            </div>
+        </div>
+        <div class="workshops">
+            <div class="workshop-img">
+                <img src="seminar.jpg" alt="Harbour Chase VA Seminar" />
+            </div>
+            <div class="workshop-desc">
+                Harbour Chase, VA Seminar on Jan. 26, 2024: Gabriel Burgos, CEO of Burgos & Brein Wealth Management, leads a workshop on VA aid and attendance.
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <div class="footer-inner">
+            <div class="footer-col" style="min-width:220px;">
+                <div class="footer-logo">
+                    <img src="logo-footer.png" alt="Burgos & Brein Wealth Management Logo" width="170"/>
+                </div>
+                <img src="accreditations.png" alt="Accreditations" style="width:110px;">
+            </div>
+            <div class="footer-col">
+                <div style="color:#fffbe6;font-weight:700;margin-bottom:10px;">Office</div>
+                <div style="margin-bottom:8px;">
+                    Orlando Office<br>
+                    1060 Woodcock Rd<br>
+                    Orlando, FL 32803
+                </div>
+                <div style="margin-bottom:8px;">
+                    Boca Raton Office<br>
+                    2255 Glades Rd<br>
+                    Boca Raton, FL 33431
+                </div>
+                <div>Contact Information<br>
+                <a href="tel:8669497675">866.949.7675</a><br>
+                <a href="mailto:info@burgosandbrein.com">info@burgosandbrein.com</a></div>
+            </div>
+            <div class="footer-col">
+                <div style="color:#fffbe6;font-weight:700;margin-bottom:10px;">Policy Links</div>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Disclaimer</a>
+                <a href="#">Conditions</a>
+                <a href="#">Cookie Policy</a>
+            </div>
+            <div class="footer-col">
+                <div style="color:#fffbe6;font-weight:700;margin-bottom:10px;">Quick Links</div>
+                <a href="#">Home</a>
+                <a href="#">About Us</a>
+                <a href="#">Services</a>
+                <a href="#">Seminars</a>
+                <a href="#">Galleries/News</a>
+                <a href="#">Contact Us</a>
+                <a href="#">Client Login</a>
+            </div>
+            <div class="footer-col">
+                <div style="color:#fffbe6;font-weight:700;margin-bottom:10px;">Email</div>
+                <form class="footer-form">
+                    <input type="email" placeholder="Email" required>
+                    <button type="submit">Submit</button>
+                </form>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2025 Burgos & Brein Wealth Management All Rights Reserved
+            <span class="sitemap"><a href="#" style="color:#ded8d2;">Sitemap</a></span>
+        </div>
+    </div>
+</body>
+</html>

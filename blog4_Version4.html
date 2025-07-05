@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Wealth Management Blog 4 - Burgos & Brein Wealth Management</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {font-family: Arial, sans-serif; margin:0; background:#fff;}
+        .header-top {background:#fff; padding:8px 18px; font-size:14px; color:#6d4c2a; display:flex; justify-content:flex-end; align-items:center;}
+        .header-top a {color:#794e28; margin-left:16px; text-decoration:none; font-weight:500;}
+        .header-top a:hover {text-decoration:underline;}
+        .header-main {display:flex; align-items:center; justify-content:space-between; padding:15px 24px 12px 24px; background:#fff; border-bottom:2px solid #ede9e1;}
+        .logo img {height:56px;}
+        .nav {display:flex; gap:24px;}
+        .nav a {color:#6d4c2a; font-size:16px; font-weight:600; text-decoration:none;}
+        .nav a.active,
+        .nav a:focus {color:#bb8d5a;}
+        .nav a:hover {text-decoration:underline;}
+        .hero {
+            position:relative; min-height:140px; background:url('blog-hero.jpg') center center/cover no-repeat;
+            display:flex; align-items:center; justify-content:center;
+        }
+        .hero-overlay {
+            position:absolute; top:0; left:0; width:100%; height:100%; background:rgba(70, 44, 25, 0.45);
+            z-index:1;
+        }
+        .hero-content {
+            position:relative; z-index:2;
+            color:#fff; text-align:center; padding:32px 15px;
+            display:flex; flex-direction:column; align-items:center; justify-content:center;
+        }
+        .hero-title {font-size:2rem; font-weight:700; margin-bottom:0;}
+        .breadcrumb {font-size:13px; color:#a58b6b; background:#faf7f3; padding:8px 18px;}
+        .breadcrumb a {color:#a58b6b; text-decoration:none;}
+        .breadcrumb a:hover {text-decoration:underline;}
+        .blog-main {max-width:1150px; margin:0 auto; display:flex; gap:38px; padding:40px 18px 0 18px;}
+        .blog-listing {flex:1 1 680px;}
+        .blog-post {
+            display:flex;
+            flex-direction:column;
+            gap:14px;
+            margin-bottom:34px;
+            border-bottom:1px solid #eee;
+            padding-bottom:24px;
+        }
+        .blog-post-image {
+            width:100%;
+            max-width:600px;
+            height:auto;
+            overflow:hidden;
+            border-radius:9px;
+            display:block;
+        }
+        .blog-post-image img {width:100%; height:auto; object-fit:cover;}
+        .blog-post-title {
+            font-size:1.13rem;
+            color:#794e28;
+            font-weight:700;
+            margin-bottom:8px;
+            margin-top:0;
+            line-height:1.35;
+        }
+        .blog-post-title a {
+            color:#794e28;
+            text-decoration: none;
+            transition: color .18s;
+        }
+        .blog-post-title a:hover {color:#bb8d5a; text-decoration:underline;}
+        .blog-post-meta {
+            font-size:0.97rem;
+            color:#a58b6b;
+            margin-bottom:7px;
+        }
+        .blog-post-excerpt {
+            font-size:1.01rem;
+            color:#4b3928;
+            line-height:1.5;
+            margin-bottom:8px;
+        }
+        .blog-readmore {
+            font-size:0.98rem;
+            color:#bb8d5a;
+            text-decoration:none;
+        }
+        .blog-readmore:hover {text-decoration:underline;}
+        .blog-sidebar {
+            flex:0 0 280px;
+            min-width:180px;
+        }
+        .sidebar-section-title {
+            font-size:1.1rem;
+            color:#794e28;
+            font-weight:700;
+            margin-bottom:6px;
+        }
+        .sidebar-list {
+            margin:0 0 18px 0;
+            padding:0;
+            list-style:none;
+        }
+        .sidebar-list li {
+            margin-bottom:7px;
+        }
+        .sidebar-list a {
+            color:#3e3222;
+            font-size:0.98rem;
+            text-decoration:none;
+        }
+        .sidebar-list a:hover {text-decoration:underline;}
+        .pagination {text-align:center; color:#bb8d5a; margin:22px 0;}
+        .pagination span, .pagination a {
+            display:inline-block; margin:0 3px; padding:5px 9px; border-radius:4px; color:#794e28; text-decoration:none;
+        }
+        .pagination .current {background:#f5f2ef; font-weight:700;}
+        /* Footer */
+        .footer {background:#4b3928; color:#fff; padding:38px 0 14px 0; margin-top:36px;}
+        .footer-inner {max-width:1250px; margin:auto; display:flex; flex-wrap:wrap; gap:48px;}
+        .footer-col {flex:1 1 220px; min-width:160px;}
+        .footer-col a {color:#fffbe6; text-decoration:none; display:block; margin-bottom:8px;}
+        .footer-col a:hover {text-decoration:underline;}
+        .footer-logo {margin-bottom:18px;}
+        .footer-bottom {text-align:center; color:#ded8d2; font-size:1.04rem; margin-top:28px;}
+        .sitemap {color:#ded8d2; float:right; margin-top:-28px; font-size:0.97rem;}
+        .footer-form input[type="email"] {width:88%;margin-bottom:9px; padding:7px; border-radius:3px; border:none; font-size:1rem;}
+        .footer-form button {background:#bb8d5a;color:#fff;padding:8px 22px;border:none;border-radius:3px;cursor:pointer;font-size:1rem; font-weight:600;}
+        @media(max-width:1100px) {
+            .header-main, .footer-inner, .blog-main {flex-direction:column; align-items:center;}
+            .footer-col {min-width:140px;}
+            .blog-main {gap:0;}
+            .blog-listing, .blog-sidebar {width:100%; max-width:100%;}
+        }
+        @media(max-width:700px) {
+            .blog-post-image {max-width:100%;}
+        }
+        @media(max-width:650px) {
+            .header-main, .header-top {flex-direction:column; align-items:flex-start;}
+            .header-main {padding:16px;}
+            .logo img {height:40px;}
+            .nav {gap:12px;}
+            .hero-title {font-size:2rem;}
+            .hero {min-height:100px;}
+            .blog-main {padding:24px 8px 0 8px;}
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Top Bar -->
+    <div class="header-top">
+        info@burgosandbrein.com &nbsp;|&nbsp; 866.949.7675
+        <a href="#">Client Login</a>
+    </div>
+
+    <!-- Header Main -->
+    <div class="header-main">
+        <div class="logo">
+            <img src="logo.png" alt="Burgos & Brein Wealth Management Logo" />
+        </div>
+        <nav class="nav">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="services.html">Services</a>
+            <a href="seminar.html">Seminars</a>
+            <a href="blog.html" class="active">Blog</a>
+            <a href="#">News</a>
+            <a href="#">Contact</a>
+        </nav>
+    </div>
+
+    <!-- Hero Section -->
+    <div class="hero" style="background-image:url('blog-hero.jpg');">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <div class="hero-title">Burgos &amp; Brein Wealth Management Blog</div>
+        </div>
+    </div>
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+        <a href="index.html">Burgos & Brein Wealth Management</a> &raquo; Wealth Management Blog
+    </div>
+
+    <!-- Blog Main Content -->
+    <div class="blog-main">
+        <!-- Blog Listing -->
+        <div class="blog-listing">
+            <!-- Post 1 -->
+            <div class="blog-post">
+                <div class="blog-post-image">
+                    <a href="blog4-post1.html"><img src="blog4-1.jpg" alt="Maximizing Income from Investments"></a>
+                </div>
+                <div class="blog-post-title"><a href="blog4-post1.html">Maximizing Income from Investments: Strategies and Tips</a></div>
+                <div class="blog-post-meta">August 2, 2024 | Investment Planning</div>
+                <div class="blog-post-excerpt">
+                    Achieving financial security and building a steady income stream is a goal for many, whether […]
+                </div>
+                <a href="blog4-post1.html" class="blog-readmore">Read More</a>
+            </div>
+            <!-- Post 2 -->
+            <div class="blog-post">
+                <div class="blog-post-image">
+                    <a href="blog4-post2.html"><img src="blog4-2.jpg" alt="How VA Aid & Attendance Supports Veterans with ADL Difficulties"></a>
+                </div>
+                <div class="blog-post-title"><a href="blog4-post2.html">How VA Aid & Attendance Supports Veterans with ADL Difficulties</a></div>
+                <div class="blog-post-meta">July 29, 2024 | VA Aid & Attendance</div>
+                <div class="blog-post-excerpt">
+                    Navigating the transition back to civilian life can present substantial hurdles for many veterans, especially those who struggle with Activities of Daily Living (ADLs), a multifaceted condition some inhibit ADLs. This accompanying post explores practical strategies and options available, as well as the crucial role and application of services and benefits to assist veterans. Veterans Affairs recognizes these unique needs and provides dedicated resources to help eligible veterans achieve greater independence and a higher quality of life despite these challenges.
+                </div>
+                <a href="blog4-post2.html" class="blog-readmore">Read More</a>
+            </div>
+            <!-- Post 3 -->
+            <div class="blog-post">
+                <div class="blog-post-image">
+                    <a href="blog4-post3.html"><img src="blog4-3.jpg" alt="Don't Let Elections Derail Your Retirement Strategy"></a>
+                </div>
+                <div class="blog-post-title"><a href="blog4-post3.html">Don't Let Elections Derail Your Retirement Strategy</a></div>
+                <div class="blog-post-meta">July 22, 2024 | Investment Planning</div>
+                <div class="blog-post-excerpt">
+                    How might the upcoming election impact your retirement savings? Or should you change your investment strategy based on the current political climate? These are typical concerns for many investors, as elections can create uncertainty.
+                    <br><br>
+                    Elections tend to evoke many emotions—whether fear, excitement, or something in between. This emotional state often leads people to make rash financial decisions they later regret.
+                </div>
+                <a href="blog4-post3.html" class="blog-readmore">Read More</a>
+            </div>
+            <!-- Post 4 -->
+            <div class="blog-post">
+                <div class="blog-post-image">
+                    <a href="blog4-post4.html"><img src="blog4-4.jpg" alt="Medicare: Safeguarding Your Finances in Healthcare"></a>
+                </div>
+                <div class="blog-post-title"><a href="blog4-post4.html">Medicare: Safeguarding Your Finances in Healthcare</a></div>
+                <div class="blog-post-meta">July 16, 2024 | Medicare Planning</div>
+                <div class="blog-post-excerpt">
+                    In a time characterized by increasing medical expenses, Medicare is a way to ensure you don't have to pay much money when you get sick. This program is run by the federal government, and helps people who qualify for it know they can still get the medical care they need without thoroughly emptying their bank accounts.
+                </div>
+                <a href="blog4-post4.html" class="blog-readmore">Read More</a>
+            </div>
+            <!-- Pagination -->
+            <div class="pagination">
+                <a href="blog3.html">&laquo; Previous</a>
+                <a href="blog.html">1</a>
+                <a href="blog2.html">2</a>
+                <a href="blog3.html">3</a>
+                <span class="current">4</span>
+            </div>
+        </div>
+        <!-- Blog Sidebar -->
+        <aside class="blog-sidebar">
+            <form style="margin-bottom:18px;">
+                <input type="text" placeholder="Search" style="width:90%;padding:7px 6px;border:1px solid #ddd;border-radius:4px;font-size:1rem;">
+            </form>
+            <div class="sidebar-section-title">Recent Posts</div>
+            <ul class="sidebar-list">
+                <li><a href="blog-post1.html">Medicare Savings Programs: How to Reduce Out-of-Pocket Costs for Low-Income Beneficiaries</a></li>
+                <li><a href="blog-post2.html">The Interplay Between Social Security and VA/Medicaid/Medicare Benefits</a></li>
+                <li><a href="blog-post3.html">VA Aid and Attendance for Surviving Spouses: A Comprehensive Guide</a></li>
+                <li><a href="blog-post4.html">10 Hidden Gems of VA Aid and Attendance</a></li>
+                <li><a href="blog-post5.html">Medicare and International Travel: What You Need to Know</a></li>
+            </ul>
+            <div class="sidebar-section-title">Categories</div>
+            <ul class="sidebar-list">
+                <li><a href="#">Healthcare Planning</a></li>
+                <li><a href="#">Investment Planning</a></li>
+                <li><a href="#">Medicare Planning</a></li>
+                <li><a href="#">VA Aid & Attendance</a></li>
+            </ul>
+        </aside>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <div class="footer-inner">
+            <div class="footer-col" style="min-width:220px;">
+                <div class="footer-logo">
+                    <img src="logo-footer.png" alt="Burgos & Brein Wealth Management Logo" width="170"/>
+                </div>
+                <img src="accreditations.png" alt="Accreditations" style="width:110px;">
+            </div>
+            <div class="footer-col">
+                <div style="color:#fffbe6;font-weight:700;margin-bottom:10px;">Office</div>
+                <div style="margin-bottom:8px;">
+                    Orlando Office<br>
+                    1060 Woodcock Rd<br>
+                    Orlando, FL 32803
+                </div>
+                <div style="margin-bottom:8px;">
+                    Boca Raton Office<br>
+                    2255 Glades Rd<br>
+                    Boca Raton, FL 33431
+                </div>
+                <div>Contact Information<br>
+                <a href="tel:8669497675">866.949.7675</a><br>
+                <a href="mailto:info@burgosandbrein.com">info@burgosandbrein.com</a></div>
+            </div>
+            <div class="footer-col">
+                <div style="color:#fffbe6;font-weight:700;margin-bottom:10px;">Policy Links</div>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Disclaimer</a>
+                <a href="#">Terms and Conditions</a>
+                <a href="#">Cookie Policy</a>
+            </div>
+            <div class="footer-col">
+                <div style="color:#fffbe6;font-weight:700;margin-bottom:10px;">Quick Links</div>
+                <a href="index.html">Home</a>
+                <a href="about.html">About Us</a>
+                <a href="services.html">Services</a>
+                <a href="seminar.html">Seminars</a>
+                <a href="blog.html">Blog</a>
+                <a href="#">Galleries/News</a>
+                <a href="#">Contact Us</a>
+                <a href="#">Client Login</a>
+            </div>
+            <div class="footer-col">
+                <div style="color:#fffbe6;font-weight:700;margin-bottom:10px;">Email</div>
+                <form class="footer-form">
+                    <input type="email" placeholder="Email" required>
+                    <button type="submit">Submit</button>
+                </form>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2025 Burgos & Brein Wealth Management All Rights Reserved
+            <span class="sitemap"><a href="#" style="color:#ded8d2;">Sitemap</a></span>
+        </div>
+    </div>
+</body>
+</html>

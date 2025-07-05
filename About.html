@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>About Us - Burgos & Brein Wealth Management</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {font-family: Arial, sans-serif; margin:0; background:#fff;}
+        .header-top {background:#fff; padding:8px 18px; font-size:14px; color:#6d4c2a; display:flex; justify-content:flex-end; align-items:center;}
+        .header-top a {color:#794e28; margin-left:16px; text-decoration:none; font-weight:500;}
+        .header-top a:hover {text-decoration:underline;}
+        .header-main {display:flex; align-items:center; justify-content:space-between; padding:15px 24px 12px 24px; background:#fff; border-bottom:2px solid #ede9e1;}
+        .logo img {height:56px;}
+        .nav {display:flex; gap:24px;}
+        .nav a {color:#6d4c2a; font-size:16px; font-weight:600; text-decoration:none;}
+        .nav a.active,
+        .nav a:focus {color:#bb8d5a;}
+        .nav a:hover {text-decoration:underline;}
+        .hero {
+            position:relative; min-height:220px; background:url('about-hero.jpg') center center/cover no-repeat;
+            display:flex; align-items:center; justify-content:center;
+        }
+        .hero-overlay {
+            position:absolute; top:0; left:0; width:100%; height:100%; background:rgba(70, 44, 25, 0.45);
+            z-index:1;
+        }
+        .hero-content {
+            position:relative; z-index:2;
+            color:#fff; text-align:center; padding:40px 15px;
+            display:flex; flex-direction:column; align-items:center; justify-content:center;
+        }
+        .hero-title {font-size:2.3rem; font-weight:700; margin-bottom:0;}
+        .breadcrumb {font-size:13px; color:#a58b6b; background:#faf7f3; padding:8px 18px;}
+        .breadcrumb a {color:#a58b6b; text-decoration:none;}
+        .breadcrumb a:hover {text-decoration:underline;}
+        .section {padding:35px 0;}
+        .center {text-align:center;}
+        .section-title {font-size:1.4rem; color:#794e28; font-weight:600; margin-bottom:15px;}
+        .about-main-wrap {max-width:1100px; margin:0 auto; padding:38px 18px 0 18px; display:flex; gap:38px;}
+        .about-main-left {flex:0 0 220px;}
+        .about-main-logo img {width:100%; max-width:220px;}
+        .about-main-right {flex:1;}
+        .about-main-title {font-size:1.25rem; color:#794e28; font-weight:700; margin-bottom:12px;}
+        .about-main-desc {font-size:1.05rem; color:#4b3928;}
+        .team-section {max-width:1180px; margin:0 auto; padding:0 18px;}
+        .team-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 22px;
+            margin-top: 18px;
+        }
+        .team-row {
+            display: flex;
+            gap: 22px;
+            justify-content: center;
+        }
+        .team-member {
+            flex: 0 1 200px;
+            background: #f7f5f2;
+            border-radius: 7px;
+            overflow: hidden;
+            text-align: center;
+            box-shadow: 0 2px 9px rgba(0,0,0,0.04);
+            transition: box-shadow 0.2s;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+        }
+        .team-member img {width:100%; height:220px; object-fit:cover; display:block;}
+        .team-member-name {background:#794e28; color:#fff; font-size:1.07rem; font-weight:700; padding:10px 0 2px 0;}
+        .team-member-role {background:#794e28; color:#e9c9a5; font-size:0.97rem; font-weight:400; padding-bottom:11px;}
+        .about-details-section {max-width:1100px; margin:32px auto 0 auto; background:#fff; border-radius:10px; box-shadow:0 2px 12px rgba(0,0,0,0.04); padding:27px 18px;}
+        .about-details-title {font-size:1.23rem; color:#794e28; font-weight:700; margin-bottom:18px; text-align:center;}
+        .accordion {border-radius:6px; border:1px solid #eee;}
+        .accordion-item {border-bottom:1px solid #eee;}
+        .accordion-title {
+            cursor:pointer; background:#f5f2ef; padding:16px 18px; font-size:1.08rem; color:#794e28; font-weight:600; outline:none; border:none; text-align:left; transition:background 0.2s;
+            position:relative;
+        }
+        .accordion-title:after {
+            content: "+"; position:absolute; right:22px; font-size:1.25rem; color:#b4864e;
+        }
+        .accordion-title.active:after { content: "-"; }
+        .accordion-content {
+            display:none; background:#fff; padding:14px 20px 18px 20px; color:#4b3928; font-size:1.01rem; animation:fadeIn 0.4s;
+        }
+        .accordion-content.active {display:block;}
+        @keyframes fadeIn {from {opacity:0;} to {opacity:1;}}
+        /* Footer */
+        .footer {background:#4b3928; color:#fff; padding:38px 0 14px 0; margin-top:36px;}
+        .footer-inner {max-width:1250px; margin:auto; display:flex; flex-wrap:wrap; gap:48px;}
+        .footer-col {flex:1 1 220px; min-width:160px;}
+        .footer-col a {color:#fffbe6; text-decoration:none; display:block; margin-bottom:8px;}
+        .footer-col a:hover {text-decoration:underline;}
+        .footer-logo {margin-bottom:18px;}
+        .footer-bottom {text-align:center; color:#ded8d2; font-size:1.04rem; margin-top:28px;}
+        .sitemap {color:#ded8d2; float:right; margin-top:-28px; font-size:0.97rem;}
+        .footer-form input[type="email"] {width:88%;margin-bottom:9px; padding:7px; border-radius:3px; border:none; font-size:1rem;}
+        .footer-form button {background:#bb8d5a;color:#fff;padding:8px 22px;border:none;border-radius:3px;cursor:pointer;font-size:1rem; font-weight:600;}
+        @media(max-width:1100px) {
+            .about-main-wrap, .footer-inner {flex-direction:column; align-items:center;}
+            .about-main-wrap {gap:0;}
+            .footer-col {min-width:140px;}
+            .team-grid {gap: 16px;}
+            .team-row {gap: 14px;}
+        }
+        @media(max-width:900px) {
+            .team-member {min-width:180px; max-width:260px;}
+            .team-row {gap: 8px;}
+        }
+        @media(max-width:700px) {
+            .team-row {flex-direction:column; align-items:center;}
+            .team-member {max-width:100%;}
+        }
+        @media(max-width:650px) {
+            .header-main, .header-top {flex-direction:column; align-items:flex-start;}
+            .header-main {padding:16px;}
+            .logo img {height:40px;}
+            .nav {gap:12px;}
+            .hero-title {font-size:2rem;}
+            .hero {min-height:100px;}
+            .about-main-wrap {padding:24px 8px 0 8px;}
+        }
+    </style>
+    <script>
+        // Simple accordion logic
+        document.addEventListener("DOMContentLoaded", function() {
+            var acc = document.getElementsByClassName("accordion-title");
+            for (let i = 0; i < acc.length; i++) {
+                acc[i].addEventListener("click", function() {
+                    // Collapse all
+                    for (let j = 0; j < acc.length; j++) {
+                        acc[j].classList.remove("active");
+                        acc[j].nextElementSibling.classList.remove("active");
+                    }
+                    // Expand clicked
+                    this.classList.add("active");
+                    this.nextElementSibling.classList.add("active");
+                });
+            }
+            // Expand the first by default
+            if (acc.length) {
+                acc[0].classList.add("active");
+                acc[0].nextElementSibling.classList.add("active");
+            }
+        });
+    </script>
+</head>
+<body>
+    <!-- Header Top Bar -->
+    <div class="header-top">
+        info@burgosandbrein.com &nbsp;|&nbsp; 866.949.7675
+        <a href="#">Client Login</a>
+    </div>
+
+    <!-- Header Main -->
+    <div class="header-main">
+        <div class="logo">
+            <img src="logo.png" alt="Burgos & Brein Wealth Management Logo" />
+        </div>
+        <nav class="nav">
+            <a href="index.html">Home</a>
+            <a href="about.html" class="active">About</a>
+            <a href="#">Services</a>
+            <a href="#">Seminars</a>
+            <a href="#">Blog</a>
+            <a href="#">Contact Us</a>
+        </nav>
+    </div>
+
+    <!-- Hero Section -->
+    <div class="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <div class="hero-title">About Us</div>
+        </div>
+    </div>
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+        <a href="index.html">Burgos & Brein Wealth Management</a> &gt; About Us
+    </div>
+
+    <!-- About Main Content -->
+    <div class="about-main-wrap">
+        <div class="about-main-left">
+            <div class="about-main-logo">
+                <img src="logo.png" alt="Burgos & Brein Wealth Management Logo">
+            </div>
+        </div>
+        <div class="about-main-right">
+            <div class="about-main-title">About Us</div>
+            <div class="about-main-desc">
+                Burgos & Brein Wealth Management, based in Orlando, specializes in assisting veterans through VA Aid & Attendance claims, long-term life planning, retirement planning, and Medicare. With over a decade of experience, our team combines empathy with expertise to ensure the community and its loved ones are prepared and secure for the future.
+            </div>
+        </div>
+    </div>
+
+    <!-- Team Section -->
+    <div class="section team-section center">
+        <div class="section-title">Our Team</div>
+        <div class="team-grid">
+            <div class="team-row">
+                <div class="team-member">
+                    <img src="team-gabriel.jpg" alt="Gabriel Burgos">
+                    <div class="team-member-name">Gabriel Burgos</div>
+                    <div class="team-member-role">CEO &amp; President</div>
+                </div>
+                <div class="team-member">
+                    <img src="team-kamila.jpg" alt="Kamila Koloziova">
+                    <div class="team-member-name">Kamila Koloziova</div>
+                    <div class="team-member-role">Chief Operating Officer</div>
+                </div>
+                <div class="team-member">
+                    <img src="team-darek.jpg" alt="Darek Smith">
+                    <div class="team-member-name">Darek Smith</div>
+                    <div class="team-member-role">Chief Compliance Officer</div>
+                </div>
+            </div>
+            <div class="team-row">
+                <div class="team-member">
+                    <img src="team-david.jpg" alt="David Lebold">
+                    <div class="team-member-name">David Lebold</div>
+                    <div class="team-member-role">Investment Advisor</div>
+                </div>
+                <div class="team-member">
+                    <img src="team-deborah.jpg" alt="Deborah McKinney">
+                    <div class="team-member-name">Deborah McKinney</div>
+                    <div class="team-member-role">Marketing Director</div>
+                </div>
+                <div class="team-member">
+                    <img src="team-ileana.jpg" alt="Ileana Burgos">
+                    <div class="team-member-name">Ileana Burgos</div>
+                    <div class="team-member-role">Client Services</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- About Details Section -->
+    <div class="about-details-section">
+        <div class="about-details-title">About Burgos & Brein Wealth Management</div>
+        <div class="accordion">
+            <div class="accordion-item">
+                <div class="accordion-title">Founding Principles</div>
+                <div class="accordion-content">
+                    Founded by Gabriel Burgos, Burgos & Brein Wealth Management is driven by a passion for providing comprehensive, unbiased financial services. Our firm prioritizes understanding our clients’ needs, fostering trust, delivering personalized service, and developing strategies aligned with their unique goals. Our principles reflect a firm commitment to their financial success.
+                </div>
+            </div>
+            <div class="accordion-item">
+                <div class="accordion-title">Our Philosophy</div>
+                <div class="accordion-content">
+                    We believe every client deserves guidance tailored to their life’s journey. We focus on building long-term relationships through integrity, transparency, and empathy, offering strategies that protect, preserve, and grow wealth for generations.
+                </div>
+            </div>
+            <div class="accordion-item">
+                <div class="accordion-title">Our Commitment</div>
+                <div class="accordion-content">
+                    Our commitment is to be a steadfast partner to our clients and their families. We are dedicated to their prosperity, providing education, proactive communication, and responsive support through every stage of retirement and care planning.
+                </div>
+            </div>
+            <div class="accordion-item">
+                <div class="accordion-title">Our Expertise</div>
+                <div class="accordion-content">
+                    With years of experience in VA Aid & Attendance, Medicaid, retirement, and investment planning, our team delivers specialized solutions. We stay current with the latest regulations and financial tools to provide the highest standard of service.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <div class="footer-inner">
+            <div class="footer-col" style="min-width:220px;">
+                <div class="footer-logo">
+                    <img src="logo-footer.png" alt="Burgos & Brein Wealth Management Logo" width="170"/>
+                </div>
+                <img src="accreditations.png" alt="Accreditations" style="width:110px;">
+            </div>
+            <div class="footer-col">
+                <div style="color:#fffbe6;font-weight:700;margin-bottom:10px;">Office</div>
+                <div style="margin-bottom:8px;">
+                    Orlando Office<br>
+                    1060 Woodcock Rd<br>
+                    Orlando, FL 32803
+                </div>
+                <div style="margin-bottom:8px;">
+                    Boca Raton Office<br>
+                    2255 Glades Rd<br>
+                    Boca Raton, FL 33431
+                </div>
+                <div>Contact Information<br>
+                <a href="tel:8669497675">866.949.7675</a><br>
+                <a href="mailto:info@burgosandbrein.com">info@burgosandbrein.com</a></div>
+            </div>
+            <div class="footer-col">
+                <div style="color:#fffbe6;font-weight:700;margin-bottom:10px;">Policy Links</div>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Disclaimer</a>
+                <a href="#">Terms and Conditions</a>
+                <a href="#">Cookie Policy</a>
+            </div>
+            <div class="footer-col">
+                <div style="color:#fffbe6;font-weight:700;margin-bottom:10px;">Quick Links</div>
+                <a href="index.html">Home</a>
+                <a href="about.html">About Us</a>
+                <a href="#">Services</a>
+                <a href="#">Seminars</a>
+                <a href="#">Galleries/News</a>
+                <a href="#">Contact Us</a>
+                <a href="#">Client Login</a>
+            </div>
+            <div class="footer-col">
+                <div style="color:#fffbe6;font-weight:700;margin-bottom:10px;">Email</div>
+                <form class="footer-form">
+                    <input type="email" placeholder="Email" required>
+                    <button type="submit">Submit</button>
+                </form>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2025 Burgos & Brein Wealth Management All Rights Reserved
+            <span class="sitemap"><a href="#" style="color:#ded8d2;">Sitemap</a></span>
+        </div>
+    </div>
+</body>
+</html>
